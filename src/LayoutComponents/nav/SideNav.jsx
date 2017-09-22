@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { toggleExpandedState } from './redux';
+import { renderParent } from './utils';
 import NavPanel from './NavPanel.jsx';
-import NavItem from './NavItem.jsx';
 
 const propTypes = {
   expandedState: PropTypes.object,
@@ -16,11 +16,9 @@ const propTypes = {
 };
 
 function mapStateToProps(state) {
-  const { expandedState, parents, pages } = state.nav;
+  const { parents } = state.nav;
   return {
-    expandedState,
-    parents,
-    pages
+    parents
   };
 }
 
@@ -31,45 +29,12 @@ function mapDispatchToProps(dispatch) {
   return dispatchers;
 }
 
-function renderChildren(children, pages) {
-    return children
-    .map(child => {
-      if (child.hasChildren) {
-        return renderParent(child, pages);
-      }
-      return (
-        <NavItem
-          isStubbed={ child.isStubbed }
-          key={ child.path }
-          path={ child.path }
-          title={ child.title }
-        />
-      );
-  });
-}
-
-function renderParent(parent, pages) {
-  const childrenForParent = pages
-    .filter(page => page.parent === parent.dashedName);
-
-    const children = renderChildren(childrenForParent, pages);
-
-  return (
-    <NavPanel
-      key={ parent.path }
-      path={ parent.path }
-      >
-      { children }
-    </NavPanel>
-    );
-}
-
-function renderPanels(parents, pages) {
+function renderPanels(parents) {
   if (!parents) {
     return 'No Parents Here';
   }
   return parents
-    .map(parent => renderParent(parent, pages));
+    .map(renderParent);
 }
 
 class SideNav extends Component {
@@ -77,14 +42,35 @@ class SideNav extends Component {
     super();
   }
 
+  componentDidMount() {
+    const { pathname } = this.context.router.route.location;
+    const pathMap = pathname.slice(1).split('/').slice(0, -1)
+      .reduce((accu, current, i, pathArray) => {
+        const path = i !== 0 ?
+          accu[pathArray[ i - 1 ]] + `/${current}` :
+          `/${current}`;
+        return {
+          ...accu,
+          [current]: path
+        };
+      }, {});
+
+    Object.keys(pathMap)
+      .map(key => pathMap[key])
+      .map(path => {
+        this.props.toggleExpandedState(path);
+        return null;
+      });
+  }
+
   render() {
-    const { expandedState, pages, parents } = this.props;
-    const panels = renderPanels(parents, pages);
+    const { parents } = this.props;
+    const panels = renderPanels(parents);
     return (
       <div className='sideNav' id='side-nav'>
         <PanelGroup>
           {
-            (!parents || !expandedState) ?
+            !parents ?
             <NavPanel title={'No Parents Here'}/> :
             panels
           }
@@ -94,6 +80,9 @@ class SideNav extends Component {
   }
 }
 
+SideNav.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 SideNav.displayName = 'SideNav';
 SideNav.propTypes = propTypes;
 

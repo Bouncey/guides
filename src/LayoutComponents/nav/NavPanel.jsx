@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { toggleExpandedState } from './redux';
+import { renderChildren } from './utils';
 
 const propTypes = {
-  categoryChildren: PropTypes.arrayOf(PropTypes.string),
-  children: PropTypes.any,
+  childrenForPanel: PropTypes.arrayOf(PropTypes.object),
   handleClick: PropTypes.func.isRequired,
   isExpanded: PropTypes.bool,
   path: PropTypes.string,
@@ -18,11 +18,13 @@ const propTypes = {
 function mapStateToProps(state, ownProps) {
   const { path } = ownProps;
   const isExpanded = state.nav.expandedState[path];
-  const category = state.nav.pages.filter(page => page.path === path)[0];
-  const { title, children: categoryChildren } = category;
+  const pages = state.nav.pages;
+  const category = pages.filter(page => page.path === path)[0];
+  const { dashedName, title } = category;
+  const childrenForPanel = pages.filter(page => page.parent === dashedName);
 
   return {
-    categoryChildren,
+    childrenForPanel,
     isExpanded,
     title
   };
@@ -91,11 +93,24 @@ class NavPanel extends PureComponent {
   }
 
   renderBody() {
-    const { categoryChildren, children, isExpanded } = this.props;
+    const { childrenForPanel, isExpanded } = this.props;
+    const panelChildren = renderChildren(childrenForPanel);
+    const childrenWithChildren = panelChildren
+      .filter(child => child.props.hasChildren);
+    const uniqueChildren = childrenWithChildren
+      .concat(
+        panelChildren
+          .filter(
+            child => !childrenWithChildren.some(x => x.key === child.key))
+          );
     return (
         <div className={ isExpanded ? 'body' : '' }>
           <ul className='navPanelUl'>
-            { categoryChildren.length ? children : <NoArticles /> }
+            {
+              Object.keys(childrenForPanel).length ?
+              uniqueChildren :
+              <NoArticles />
+            }
           </ul>
         </div>
       );
