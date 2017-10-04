@@ -37,8 +37,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "chalk": "^2.0.1",
-    "pre-commit": "^1.2.2"
+    "chalk": "^2.0.1"
   },
   "keywords": [
     "freeCodeCamp",
@@ -52,13 +51,6 @@
     "build": "node bin/createNavData && node --max_old_space_size=7168 ./node_modules/gatsby/dist/gatsby-cli.js build",
     "dev": "node bin/createNavData && gatsby develop",
     "lint": "eslint --ext .js,.jsx --ignore-path .gitignore .",
-    "pre-commit-message": "echo \"Running pre-commit script. This can take a while.\"",
-    "normalise": "node bin/normaliseArticles",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "pre-commit": [
-    "pre-commit-message",
-    "lint",
-    "normalise"
-  ]
+  }
 }
