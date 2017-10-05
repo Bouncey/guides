@@ -4,3 +4,4 @@ node_js:
 script:
   - yarn run lint
   - node bin/createNavData
+  - chmod +x ./travis-normalise.sh && ./travis-normalise.sh
