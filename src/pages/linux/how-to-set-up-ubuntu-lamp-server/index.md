@@ -1,5 +1,5 @@
 ---
-title: how-to-set-up-ubuntu-lamp-server
+title: How to Setup LAMP Server on Ubuntu
 ---
 ## How to Set Up a Local LAMP Server on Ubuntu
 
@@ -51,15 +51,11 @@ You should then be able to create an info.php file in the /var/www/html director
 
 In the file type the following php code:
 
-* `<?php
-      phpinfo();
-    ?>`
+```php
+<?php phpinfo(); ?>
+```
 
 Then, open a browser and type in localhost/info.php
 You should see a page from the php file you just wrote that gives you information about php.
 
 Finally, to access phpMyAdmin go to localhost/phpmyadmin in your browser.  The defualt root username is 'root' and the password is the password you chose earlier for the MySQL database.  
-
-### More Information
-
-<!-- Insert helpful links here -->
