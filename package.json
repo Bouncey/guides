@@ -51,7 +51,7 @@
     "_comment": "ONLY RUN BUILD IF YOUR SYSTEM HAS 8GB OR MORE OF RAM",
     "build": "node --max_old_space_size=7168 node_modules/gatsby-cli build",
     "dev": "gatsby develop",
-    "lint": "eslint --ext .js,.jsx ",
+    "lint": "eslint --ext .js,.jsx .",
     "pre-commit-message": "echo \"Running pre-commit script. This can take a while.\"",
     "normalise": "node bin/normaliseArticles",
     "test": "echo \"Error: no test specified\" && exit 1"

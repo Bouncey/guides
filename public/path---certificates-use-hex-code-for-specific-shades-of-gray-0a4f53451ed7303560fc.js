@@ -1,0 +1,2 @@
+webpackJsonp([0x6cfb7cce0e42],{3794:function(e,o){e.exports={data:{markdownRemark:{html:"<p>We can also create other shades of gray by evenly mixing all three colors. We can go very close to true black. <code>background-color: #111111;</code></p>",fields:{slug:"/certificates/use-hex-code-for-specific-shades-of-gray/"},frontmatter:{title:"Use Hex Code for Specific Shades of Gray"}}},pathContext:{slug:"/certificates/use-hex-code-for-specific-shades-of-gray/"}}}});
+//# sourceMappingURL=path---certificates-use-hex-code-for-specific-shades-of-gray-0a4f53451ed7303560fc.js.map
