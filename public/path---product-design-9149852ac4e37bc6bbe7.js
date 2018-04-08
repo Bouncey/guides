@@ -1,0 +1,2 @@
+webpackJsonp([0x6ce0d09c7ee0],{5821:function(e,t){e.exports={data:{markdownRemark:{html:"<h2>Product Design</h2>\n<p>In this section, we’ll have guides to a wide variety of tools and methods used by product designers.</p>",fields:{slug:"/product-design/"},frontmatter:{title:"Product Design"}}},pathContext:{slug:"/product-design/"}}}});
+//# sourceMappingURL=path---product-design-9149852ac4e37bc6bbe7.js.map
