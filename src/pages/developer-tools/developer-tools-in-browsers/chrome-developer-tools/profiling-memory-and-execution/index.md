@@ -1,9 +1,9 @@
 ---
-title: Promise Reslove
+title: Profiling Memory and Execution
 ---
-## Promise Reslove
+## Profiling Memory and Execution
 
-This is a stub. <a href='https://github.com/freecodecamp/guides/tree/master/src/pages/javascript/standard-objects/promise/promise-reslove/index.md' target='_blank' rel='nofollow'>Help our community expand it</a>.
+This is a stub. <a href='https://github.com/freecodecamp/guides/tree/master/src/pages/developer-tools/developer-tools-in-browsers/chrome-developer-tools/profiling-memory-and-execution/index.md' target='_blank' rel='nofollow'>Help our community expand it</a>.
 
 <a href='https://github.com/freecodecamp/guides/blob/master/README.md' target='_blank' rel='nofollow'>This quick style guide will help ensure your pull request gets accepted</a>.
 
