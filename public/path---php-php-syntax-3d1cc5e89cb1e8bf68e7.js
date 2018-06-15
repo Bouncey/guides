@@ -1,2 +1,2 @@
-webpackJsonp([0x9217f392147b],{5775:function(t,a){t.exports={data:{markdownRemark:{html:"<h2>Basic PHP Syntax</h2>\n<p>A PHP script can be placed anywhere in a document. It always starts with ’<?php' and ends with '?>’</p>",fields:{slug:"/php/php-syntax/"},frontmatter:{title:"PHP Syntax"}}},pathContext:{slug:"/php/php-syntax/"}}}});
+webpackJsonp([0x9217f392147b],{5895:function(t,a){t.exports={data:{markdownRemark:{html:"<h2>Basic PHP Syntax</h2>\n<p>A PHP script can be placed anywhere in a document. It always starts with ’<?php' and ends with '?>’</p>",fields:{slug:"/php/php-syntax/"},frontmatter:{title:"PHP Syntax"}}},pathContext:{slug:"/php/php-syntax/"}}}});
 //# sourceMappingURL=path---php-php-syntax-3d1cc5e89cb1e8bf68e7.js.map
